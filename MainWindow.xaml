@@ -1,0 +1,51 @@
+﻿<Window x:Class="Lab01.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab01"
+        mc:Ignorable="d"
+        Title="MyProgram" Height="450" Width="800" MinHeight="200" MinWidth="250"
+        Background="Black" Foreground="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock TextAlignment="Center" VerticalAlignment="Center" 
+                   Text="Select Your Birthdate:" Grid.Row="0" 
+                   FontSize="14" FontFamily="Montserrat" FontWeight="Bold"/>
+
+        <DatePicker HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    SelectedDate="{Binding BirthDate, Mode=TwoWay}" Grid.Row="1" 
+                    Background="Black" Foreground="Black" FontFamily="Montserrat"/>
+
+        <TextBlock Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center"
+                   Text="{Binding BirthdayMessage}" 
+                   FontSize="16" FontWeight="Bold" Foreground="#FFD700"
+                   Visibility="{Binding BirthdayMessage, Converter={StaticResource StringToVisibilityConverter}}"/>
+
+        <TextBlock Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center"
+                   Text="{Binding AgeMessage}" 
+                   FontSize="14" FontFamily="Montserrat"
+                   Visibility="{Binding HasCalculated, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+        <TextBlock Grid.Row="4" TextAlignment="Center" VerticalAlignment="Center"
+                   Text="{Binding WesternZodiac}" 
+                   FontSize="14" FontFamily="Montserrat"
+                   Visibility="{Binding HasCalculated, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+        <TextBlock Grid.Row="5" TextAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"
+                   Text="{Binding ChineseZodiac}" 
+                   FontSize="14" FontFamily="Montserrat"
+                   Visibility="{Binding HasCalculated, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+    </Grid>
+</Window>
